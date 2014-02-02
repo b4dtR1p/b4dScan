@@ -15,7 +15,8 @@ Easy step to install required module is, type in the Terminal:
 
 or download manually from here http://sourceforge.net/projects/pysocks/				
 									
-	Author: b4d_tR1p
+	Author: b4d_tR1p - (b4d_tR1p@me.com)
+	GitHub: https://github.com/b4dtR1p/b4dScan
 				
 	Date  : January 2014	
 	Licence : GPL v3 or any later version
