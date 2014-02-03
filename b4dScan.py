@@ -9,11 +9,11 @@ _  /_/ //__  __// /_/ /  ____/ / / /__  / /_/ / _  / / /
 	This is a simple port scanner made in python 3.3
 	over 'Tor' proxy socks5 - module required PySocks	
 
-Easy step to install required module is, type in the Terminal:
+	Easy step to install required module is, type in the Terminal:
 	
 	:$ pip install PySocks 
 
-or download manually from here http://sourceforge.net/projects/pysocks/				
+	or download manually from here http://sourceforge.net/projects/pysocks/				
 									
 	Author: b4d_tR1p - (b4d_tR1p@me.com)
 	GitHub: https://github.com/b4dtR1p/b4dScan
@@ -35,6 +35,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+__author__ = 'b4d_tR1p - (b4d_tR1p@me.com)'
+__version__ = '0.1'
+
 import socket, socks, sys
 from datetime import datetime
 
@@ -45,17 +48,22 @@ class PortScan(object):
 	def __init__(self, host=None):
 		self.host = host or ''	
 		
-	def Scan(self):
+	def Scan(self, tor):
 		self.host = str(input('Please enter a host name:~$ '))
 		try:
 			for port in range(1, 1024):
+				if tor == 1:
+					# Building socks channel over Tor proxy
+					socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, 'localhost', 9050, True)
+					socket.socket = socks.socksocket
+				else:
 				# Set default timeout
-				socket.setdefaulttimeout(3)
-				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				result = sock.connect_ex((self.host, port))
-				if result == 0:
-					print ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
-					return port
+					socket.setdefaulttimeout(3)
+					sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+					result = sock.connect_ex((self.host, port))
+					if result == 0:
+						print ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
+						return port
 				# Close socks channel	
 				sock.close()
 		# We also put in some error handling for catching errors		
@@ -70,38 +78,6 @@ class PortScan(object):
 		except socket.error:
 			print("Couldn't connect to server")
 			sys.exit()
-
-
-	def TorScan(self):
-		self.host = str(input('Please enter a host name:~$ '))
-		# Using the range function to specify ports (here it will scans all ports between 1 and 1024)
-		try:
-			for port in range(1, 1024):
-				# Building socks channel over Tor proxy
-				socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, 'localhost', 9050, True)
-				socket.socket = socks.socksocket
-				# Set default timeout
-				socket.setdefaulttimeout(3)
-				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				result = sock.connect_ex((self.host, port))
-				if result == 0:
-					print ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
-					return port
-				# Close socks channel	
-				sock.close()
-		# We also put in some error handling for catching errors		
-		except KeyboardInterrupt:
-			print(' You press Crtl+C')
-			sys.exit()
-
-		except socket.gaierror:
-			print('Hostname could not be resolved. Exiting')
-			sys.exit()
-
-		except socket.error:
-			print("Couldn't connect to server")
-			sys.exit()
-	
 
 def choice():
 	choice = int(input('Choose your entry here:~$ '))
@@ -130,9 +106,9 @@ def main():
 	a = PortScan()
 	entry = choice()
 	if entry == 1:
-		a.Scan()
+		a.Scan(0)
 	elif entry == 2:
-		a.TorScan()
+		a.Scan(1)
 	elif entry == 3:
 		print('Tnks for using PortScan, bye bye')
 		sys.exit()
