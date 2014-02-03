@@ -62,23 +62,14 @@ class PortScan(object):
 					# Building socks channel over Tor proxy
 					socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, 'localhost', 9050, True)
 					socket.socket = socks.socksocket
-					sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-					result = sock.connect_ex((self.host, port))
-					if result == 0:
-						print ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
-						return port
-					# Close socks channel
-					sock.close()
-				else:
-				# Set default timeout
-					socket.setdefaulttimeout(3)
-					sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-					result = sock.connect_ex((self.host, port))
-					if result == 0:
-						print ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
-						return port
-					# Close socket channel	
-					sock.close()
+				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				result = sock.connect_ex((self.host, port))
+				if result == 0:
+					print ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
+					return port
+				# Close socks channel
+				sock.close()
+				
 		# We also put in some error handling for catching errors		
 		except KeyboardInterrupt:
 			print(' You press Crtl+C')
@@ -134,15 +125,4 @@ def main():
 if __name__ == '__main__':
 	main()
 	print('Scanning completed in: ', total)
-
-
-	
-
-		
-	
-
-
-	
-
-
 
