@@ -11,12 +11,13 @@ _  /_/ //__  __// /_/ /  ____/ / / /__  / /_/ / _  / / /
 
 Easy step to install required module is, type in the Terminal:
 	
-	:$ pip install PySocks 
+	:$ pip3 install PySocks 
 
 or download manually from here http://sourceforge.net/projects/pysocks/				
 									
 	Author: b4d_tR1p
-				
+	GitHub: https://github.com/b4dtR1p/b4dScan
+	
 	Date  : January 2014	
 	Licence : GPL v3 or any later version
 
@@ -33,6 +34,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
+
+__author__ = 'b4d_tR1p - (b4d_tR1p@me.com)'
+__version__ = '0.1'
 
 import socket, socks, sys
 from datetime import datetime
