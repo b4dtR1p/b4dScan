@@ -12,7 +12,7 @@
 
 	Easy step to install required module is, type in the Terminal:
 	
-	:$ pip install PySocks 
+	:$ pip3 install PySocks 
 
 	or download manually from here http://sourceforge.net/projects/pysocks/				
 									
