@@ -11,13 +11,20 @@ _  /_/ //__  __// /_/ /  ____/ / / /__  / /_/ / _  / / /
 
 	Easy step to install required module is, type in the Terminal:
 	
-	:$ pip install PySocks 
+	:$ pip3 install PySocks 
 
 	or download manually from here http://sourceforge.net/projects/pysocks/				
 									
+<<<<<<< HEAD
 	Author: b4d_tR1p - (b4d_tR1p@me.com)
 	GitHub: https://github.com/b4dtR1p/b4dScan
 				
+=======
+	Copyright® 2014 Alessandro Pucci - @b4d_tR1p
+	
+	GitHub: https://github.com/b4dtR1p/b4dScan
+	
+>>>>>>> 04556a647ae418189dcca39a5ba69e88f9fe2595
 	Date  : January 2014	
 	Licence : GPL v3 or any later version
 
