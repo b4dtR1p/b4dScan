@@ -113,8 +113,8 @@ def main():
 |.____/   \_/\__,_\____/ \___\___|__| |_| - V0.1\n  
                                            
     1) Scan
-	2) TorScan
-	3) Exit
+    2) TorScan
+    3) Exit
 		''')
 	a = PortScan()
 	entry = choice()
