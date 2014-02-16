@@ -56,8 +56,11 @@ class PortScan(object):
 		
 	def Scan(self, tor):
 		self.host = str(input('Please enter a host name:~$ '))
+		self.in_port = int(input('Enter initial number for port range here:~$ '))
+		self.ex_port = int(input('Enter final number for port range here:~$ '))
+		
 		try:
-			for port in range(1, 1024):
+			for port in range(self.in_port, self.ex_port):
 				if tor == 1:
 					# Building socks channel over Tor proxy
 					socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, 'localhost', 9050, True)
