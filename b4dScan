@@ -87,6 +87,10 @@ class b4dScan():
 			sock.settimeout(0.5)
 			result = sock.connect_ex((host, port))
 			if result == 0:
+				output = ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
+				out_file = open("output_scan.txt", "w")
+				out_file.write(output)
+				out_file.close()
 				print ('Port {}: \t Open'.format(port) + ' \t Service: \t' + socket.getservbyport(port))
 				return port
 			sock.close()
@@ -97,6 +101,10 @@ class b4dScan():
 			socket.socket = socks.socksocket
 		host = ('http://www.' + self.host)
 		r = urllib(host)
+		output = r.info()
+		out_file = open("output_request.txt", "w")
+		out_file.write(str(output))
+		out_file.close()
 		print (r.info())
 		return r.info()
 		print (r.getcode())
